@@ -1,29 +1,31 @@
 # Slacky Dark
-Dark mode theme for Slack desktop clients
+Dark mode theme for Slack desktop and web based clients
 ```diff
 - ! New update with flatter look - 9/14/18
-- ! Changed ssb-interop.js code to append to body instead of head tag to overwrite custom theme settings. 
--   No need to add the theme colors anymore. 9/17/18
+- ! Changed ssb-interop.js code to append to body instead of head tag to overwrite custom theme settings - 9/17/18
+- ! Added userstyle for web based slack client - 10/9/18
 ```
 
 # Preview
 ![image](https://user-images.githubusercontent.com/6263626/45646513-cc3e1100-ba80-11e8-817c-368b6525f7df.PNG)
 
-# Installing into Slack client
+# Installing into Slack Desktop client
 ```javascript
 *For quick/easy install on Windows, check the **Automated Install** section at the bottom.
 ```
 
-Find the Slack application directory as follows:
+1. Find the Slack application directory as follows:
 * Windows: `%homepath%\AppData\Local\slack\`
 * Mac: `/Applications/Slack.app/Contents/`
 * Linux: `/usr/lib/slack/`
 
-Open the most recent version folder (Ex. app-3.1.0).
+**NOTE**: You can do this to the Windows Store UWP Slack app as well, but it's recommended to use the Desktop version. If you want to go the UWP route, give yourself access to the following hidden folder `C:\Program Files\WindowsApps\`. The instructions below can be followed in this folder pretty much the same as the ones above.
 
-Navigate to: `\resources\app.asar.unpacked\src\static` and edit the file `ssb-interop.js`.
+2. Open the most recent version folder (Ex. app-3.1.0).
 
-At the very bottom of the file, add the following code:
+3. Navigate to: `\resources\app.asar.unpacked\src\static` and edit the file `ssb-interop.js`.
+
+4. At the very bottom of the file, add the following code:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function() {
@@ -35,13 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
  });
 });
 ```
-After save, restart Slack. If any issues are seen with the sidebar colors not showing correct, set your custom theme like this:
-
-![image](https://user-images.githubusercontent.com/6263626/45648214-08737080-ba85-11e8-97a9-9a6b9aa8f5cb.png)
+5. After save, restart Slack.
 
 ```javascript
 *Note: This will have to be done after each Slack app update as the file is overwritten.*
 ```
+
+# Installing into Slack Web Based Client
+
+1. Install the Stylus extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/)
+
+2. Apply the style from my [UserStyles.org](https://userstyles.org/styles/164675/slacky-dark) page.
 
 # Automated Install (Windows)
 
@@ -49,15 +55,15 @@ After save, restart Slack. If any issues are seen with the sidebar colors not sh
 
 2. Download SlackInstall.ps1 and run it with powershell. This will automatically add all the code to the correct file.
 
-3. Open Slack and set your color pallete like above and you're all done.
-
 # Enabling Developer Tools in Slack
 
 * Windows: Create a shortcut to Slack and change the target to 
 
 `C:\Windows\System32\cmd.exe /c "SET SLACK_DEVELOPER_MENU=TRUE && start %homepath%\AppData\Local\slack\slack.exe"`
 
-Run Dev Tools with Ctrl+Alt+I or from Menu > View > Developer.
+Run Dev Tools with <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>I</kbd>. (Menu > View > Developer) 
+
+Refresh Slack window with <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd>. (Menu > View > Developer)
 
 * Mac: Set up as an Automator program with the "program" being Run Shell Script that has the following code:
 
@@ -67,10 +73,9 @@ export SLACK_DEVELOPER_MENU=true
 open -a /Applications/Slack.app
 ```
 
-Run Dev Tools with Command+Option+I or from Menu > View > Developer.
+Run Dev Tools with <kbd>⌘ Command</kbd>+<kbd>⌥ Option</kbd>+<kbd>I</kbd>.  (Menu > View > Developer) 
+
+Refresh Slack window with <kbd>⌘ Command</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd>.  (Menu > View > Developer) 
 
 **Credits**
-
-###### [Slack Night Mode](https://github.com/laCour/slack-night-mode) ######
-
-###### [Slack Black Theme](https://github.com/widget-/slack-black-theme) ######
+###### [Slack Night Mode](https://github.com/laCour/slack-night-mode) | [Slack Black Theme](https://github.com/widget-/slack-black-theme)
